@@ -10,10 +10,21 @@
 <body>
     <header>WIMBY</header>
     <div class="container">
-        <button id="getLocation" class="button1" onclick="buttonAlert()">Get Location</button>
-        <div class="locationText">
-            <p id="latitude"></p>
-            <p id="longitude"></p>
+        <div class="containerColumn">
+            <div class="innerContainer">
+                <button id="getLocation" class="button1" onclick="findMyPosition()">Get Weather</button>
+                <div class="locationText">
+                    <p id="latitude"></p>
+                    <p id="longitude"></p>
+                </div>
+            </div>
+        </div>
+        <div class="containerColumn">
+            <div class="innerContainer">
+                <ul>
+                    <li id="temperature">example temp</li>
+                </ul>
+            </div>
         </div>
     </div>
 </body>

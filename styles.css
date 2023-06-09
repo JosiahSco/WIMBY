@@ -14,21 +14,35 @@ header {
 }
 
 .container {
-    height: 60vh;
     display: flex;
-    justify-content: center;
+    overflow: auto;
+}
+
+.innerContainer {
+    display: flex;
+    overflow: auto;
+    height: 80vh;
     align-items: center;
-    
+    justify-content: center;
+    position: relative;
+}
+
+
+.containerColumn {
+    flex: 50%;
+
 }
 
 .button1 {
     background-color: #985E6D;
+    display: flex;
     color: black;
     border-radius: 8px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 24px;
     padding: 16px 16px;
     box-shadow: 0 4px 4px rgba(0,0,0,0.25);
+    position: absolute;
 }
 
 p {
@@ -37,7 +51,17 @@ p {
 }
 
 .locationText {
-    position: absolute;
-    bottom: 50vh;
-    
+    position:absolute;
+    margin-top: 16vh;
+}
+
+.weatherData {
+    position: relative;
+    padding: 8vw;
+}
+
+ul {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    list-style-type: none;
 }
