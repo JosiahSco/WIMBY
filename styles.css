@@ -1,0 +1,30 @@
+body {
+    background-color: #494E6B;
+    margin: 0;
+}
+
+header {
+    color: #98878F;
+    background-color: #192231;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 24px;
+    margin: 0;
+    padding: 16px 16px;
+    box-shadow: 0 4px 4px rgba(0,0,0,0.25);
+}
+
+.container {
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button1 {
+    background-color: #985E6D;
+    border-radius: 8px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 24px;
+    padding: 16px 16px;
+    box-shadow: 0 4px 4px rgba(0,0,0,0.25);
+}
