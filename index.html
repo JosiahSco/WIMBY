@@ -4,17 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel = "stylesheet" href="styles.css">
-    <script src="main.js"></script>
     <title>WIMBY</title>
 </head>
 <body>
     <header>WIMBY</header>
     <div class="container">
-        <button id="getLocation" class="button1" onclick="buttonAlert()">Get Location</button>
-        <div class="locationText">
-            <p id="latitude"></p>
-            <p id="longitude"></p>
+        <div class="containerColumn">
+            <div class="innerContainer">
+                <button id="getLocation" class="button1">Get Weather</button>
+                <div class="locationText">
+                    <p id="latitude"></p>
+                    <p id="longitude"></p>
+                </div>
+            </div>
+        </div>
+        <div class="containerColumn">
+            <div class="innerContainer">
+                <ul>
+                    <li id="location"></li>
+                    <li id="conditions"></li>
+                    <li id="temperature"></li>
+                </ul>
+            </div>
         </div>
     </div>
+    <script src="main.js" type="module"></script>
 </body>
 </html>
