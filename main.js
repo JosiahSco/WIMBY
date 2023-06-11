@@ -21,7 +21,6 @@ function findMyPosition() {
 document.querySelector('#getLocation').addEventListener('click', findMyPosition);
 
 function getCurrentWeather(latitude, longitude) {
-    console.log('hmmm');
     fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${getAPIKey()}`)
     .then(response => response.json())
     .then(json => {
