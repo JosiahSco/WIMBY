@@ -1,33 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel = "stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css">
     <title>WIMBY</title>
+    <script src="main.js" type="module"></script>
 </head>
+
 <body>
     <header>WIMBY</header>
     <div class="container">
-        <div class="containerColumn">
-            <div class="innerContainer">
-                <button id="getLocation" class="button1">Get Weather</button>
-                <div class="locationText">
-                    <p id="latitude"></p>
-                    <p id="longitude"></p>
-                </div>
-            </div>
-        </div>
-        <div class="containerColumn">
-            <div class="innerContainer">
-                <ul>
-                    <li id="location"></li>
-                    <li id="conditions"></li>
-                    <li id="temperature"></li>
-                </ul>
-            </div>
+        <form action="#" class="search-bar" id="searchLocation">
+            <input onkeydown="searchLocation" type="text" placeholder="Enter Location or Use Current Location &#8594">
+            <button id="getLocation" type="button"><img src="/graphics/map-marker-alt.png"></button>
+        </form>
+        <div class="innerContainer">
+            <ul>
+                <li id="location"></li>
+                <li id="conditions"></li>
+                <li id="temperature"></li>
+            </ul>
         </div>
     </div>
-    <script src="main.js" type="module"></script>
 </body>
+
 </html>
