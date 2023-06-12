@@ -1,5 +1,7 @@
 import { getAPIKey } from "./config.js";
 
+var searchBar = document.querySelector('.search-bar');
+
 function findMyPosition() {
     function success(position) {
         const latitudeNum = position.coords.latitude;
@@ -19,9 +21,16 @@ function findMyPosition() {
 }
 
 document.querySelector('#getLocation').addEventListener('click', findMyPosition);
-document.querySelector('.search-bar').addEventListener('keypress', function(e){
+searchBar.addEventListener('keypress', function(e){
     if (e.keyCode == 13) {
-      console.log('enter pressed in input field');   
+      console.log('enter pressed in input field');
+      searchBar.style.animationName = "none";
+      searchBar.style.animationPlayState = "running";
+      requestAnimationFrame(() => {
+        setTimeout(() => {
+            searchBar.style.animationName = "ponder"
+        }, 0);
+      });  
     }
 });
 

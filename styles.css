@@ -1,3 +1,10 @@
+@keyframes ponder {
+    0% {width: 100%;}
+   40% {width: 60%; }
+   70% {width: 30%; }
+  100% {width: 10%;background: white;}
+  }
+
 body {
     background-color: #494E6B;
     margin: auto;
@@ -26,12 +33,17 @@ header {
 .search-bar {
     width: 100%;
     max-width: 700px;
-    background: rgba(0,0,0,0.25);
+    background: rgba(0, 0, 0, 0.25);
     border-radius: 60px;
     padding: 10px 20px;
     display: flex;
     align-items: center;
     box-shadow: 0 4px 4px rgba(0,0,0,0.25);
+    animation-name: none;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-play-state: paused;
+    animation-fill-mode: forwards;
 }
 
 .search-bar input {
@@ -39,7 +51,7 @@ header {
     flex: 1;
     border: 0;
     outline: 0;
-    padding: 24px 20px;
+    padding: 1px 1px;
     font-size: 20px;
 }
 
