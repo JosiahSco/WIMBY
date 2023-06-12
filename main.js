@@ -19,12 +19,19 @@ function findMyPosition() {
 }
 
 document.querySelector('#getLocation').addEventListener('click', findMyPosition);
+
 document.querySelector('.search-bar').addEventListener('keypress', function(e){
     if (e.keyCode == 13) {
-      console.log('enter pressed in input field');   
+    const cityName = document.querySelector('#getLocation').value
+    console.log('enter pressed in input field');   
+    fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=5&appid=${getAPIKey()}`)
+    .then(response => response.json())
+    .then(json => {
+        console.log(json);
+        
+      });
     }
 });
-
 
 function getCurrentWeather(latitude, longitude) {
     fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${getAPIKey()}`)
@@ -34,5 +41,5 @@ function getCurrentWeather(latitude, longitude) {
         document.querySelector('#location').textContent =  json.name;
         document.querySelector('#conditions').textContent = json.weather[0].main;
         document.querySelector('#temperature').textContent = 'Temperature: ' + json.main.temp;
-    })
+    });
 }
