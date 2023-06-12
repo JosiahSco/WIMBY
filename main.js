@@ -19,6 +19,12 @@ function findMyPosition() {
 }
 
 document.querySelector('#getLocation').addEventListener('click', findMyPosition);
+document.querySelector('.search-bar').addEventListener('keypress', function(e){
+    if (e.keyCode == 13) {
+      console.log('enter pressed in input field');   
+    }
+});
+
 
 function getCurrentWeather(latitude, longitude) {
     fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${getAPIKey()}`)
