@@ -55,6 +55,7 @@ function getCurrentWeather(latitude, longitude) {
     .then(response => response.json())
     .then(json => {
         console.log(json);
+        document.getElementById('currentWeatherList').style.backgroundColor = 'rgba(0,0,0,0.25)';
         // WEATHER RESULTS
         // Location
         document.querySelector('#location').textContent =  json.name;

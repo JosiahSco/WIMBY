@@ -1,16 +1,26 @@
+html {
+    height: 100%;
+}
+
 body {
+    /*
     background-color: #494E6B;
+    background-color: #49365f;
+    */
+    font-family: 'Poppins', sans-serif;
+    background-image: linear-gradient(#192231,#49365f,#985E6D);
     margin: auto;
     overflow: visible;
+    min-height: 100%;
 }
 
 header {
-    color: #98878F;
+    color: rgb(218, 199, 212);
     background-color: #192231;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 24px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 28px;
     margin: 0;
-    padding: 16px 16px;
+    padding: 12px 12px;
     box-shadow: 0 4px 4px rgba(0,0,0,0.25);
 }
 
@@ -25,7 +35,7 @@ header {
 
 .search-bar {
     width: 100%;
-    max-width: 700px;
+    max-width: 755px;
     background: rgba(0,0,0,0.25);
     border-radius: 60px;
     padding: 10px 20px;
@@ -41,7 +51,13 @@ header {
     outline: 0;
     padding: 24px 20px;
     font-size: 20px;
-    color: white;
+    color: rgb(218, 199, 212);
+    font-family: 'Poppins', sans-serif;
+}
+
+::placeholder {
+    color: rgb(218, 199, 212);
+    opacity: 1;
 }
 
 .search-bar button img {
@@ -68,13 +84,14 @@ header {
 }
 
 p {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: bold;
 }
 
 ul {
-    color: #98878F;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-weight: bold;
+    margin: 20px;
+    padding: 20px;
+    font-size: 20px;
+    border-radius: 25px;
+    color: rgb(218, 199, 212);
     list-style-type: none;
 }
