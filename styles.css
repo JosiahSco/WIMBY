@@ -28,7 +28,7 @@ header {
     width: 100%;
     min-height: 75vh;
     display: flex;
-    overflow: auto;
+    overflow: visible;
     align-items: center;
     justify-content: center;
 }
@@ -76,7 +76,7 @@ header {
 
 .innerContainer {
     display: flex;
-    overflow: auto;
+    overflow: visible;
     height: 80vh;
     align-items: center;
     justify-content: center;
@@ -95,3 +95,97 @@ ul {
     color: rgb(218, 199, 212);
     list-style-type: none;
 }
+
+#weatherWrapper {
+    display: flex;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#currentWeather {
+    display: flex;
+    align-items: center;
+}
+
+#currentWeatherIcon {
+    flex-direction: row;
+    width: 300px;
+    align-items: center;
+}
+
+#currentWeatherStack {
+    margin-block-start: 0;
+    margin-block-end: 0;
+    width: 300px;
+    justify-content: center;
+    align-items: center;
+}
+
+#currentTemp {
+    color: rgb(218, 199, 212);
+    font-size: 120px;
+    margin-block-start: 0;
+    margin-block-end: -0.2em;
+    margin-inline-start: -0.1em;
+}
+
+#currentLocation {
+    color: rgb(218, 199, 212);
+    font-size: 30px;
+    margin-block-end: -1em;
+}
+
+#detailsButton {
+    background: rgba(0,0,0,0.25);
+    color: rgb(218, 199, 212);
+    font-size: 20px;
+    border: 0;
+    border-radius: 15%;
+    height: 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 4px rgba(0,0,0,0.25);
+}
+
+.forecastCard {
+    background: rgba(0,0,0,0.25);
+    padding: 2.5vh 1.5vw;
+    border-radius: 12%;
+    color: rgb(218, 199, 212);
+    
+}
+
+.innerCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: -2vh;
+    margin-top: -2vh;
+}
+
+.forecastImg{
+    width: 10vw;
+    margin: -2vh;
+}
+
+.lowHighWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.low,
+.high {
+    font-size: 30px;
+    margin: 1vw;
+}
+
+
+#forecastTable {
+    border-spacing: 5vw;
+    margin-bottom: -20vh;
+}
+

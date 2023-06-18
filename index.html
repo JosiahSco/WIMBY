@@ -19,22 +19,89 @@
             <input id="searchInput" type="text" placeholder="Enter Location (City Name or Zip Code) or Use Current Location &#8594">
             <button id="getLocation" type="button"><img src="graphics/map-marker-alt.png"></button>
         </form>
-        <div class="innerContainer">
-            <ul id="currentWeatherList">
-                <li id="location"></li>
-                <li id="conditions"></li>
-                <li id="temperature"></li>
-                <li id="datetime"></li>
-                <li id="windgust"></li>
-                <li id="winddeg"></li>
-                <li id="windspeed"></li>
-                <li id="tempmin"></li>
-                <li id="tempmax"></li>
-                <li id="feelslike"></li>
-                <li id="humidity"></li>
-                <li id="sunset"></li>
-                <li id="sunrise"></li>
-            </ul>
+        </div>
+        <div id="weatherWrapper">
+            <div id="currentWeather">
+                <img id="currentWeatherIcon" src="/graphics/partly-cloudy.png">
+                <div id="currentWeatherStack">
+                    <h2 id="currentLocation"></h2>
+                    <h1 id="currentTemp"></h1>
+                    <button id="detailsButton">Details</button>
+                </div>
+                <ul id="currentWeatherList" style="display: none;">
+                    <li id="conditions"></li>
+                    <li id="feelslike"></li>
+                    <li id="tempmin"></li>
+                    <li id="tempmax"></li>
+                    <li id="humidity"></li>
+                    <li id="windspeed"></li>
+                    <li id="winddeg"></li>
+                    <li id="sunset"></li>
+                    <li id="sunrise"></li>
+                    <li id="datetime"></li>
+                </ul>
+            </div>
+            <div id="forecastWrapper">
+                <table id="forecastTable">
+                    <tr>
+                        <td class="forecastCard">
+                            <div class="innerCard">
+                                <h2 class="day">Monday</h1>
+                                <img src="graphics/partly-cloudy.png" class="forecastImg">
+                                <div class="lowHighWrapper">
+                                    <h3 class="low">90</h3>
+                                    <h1>-</h1>
+                                    <h3 class="high">100</h3>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="forecastCard">
+                            <div class="innerCard">
+                                <h2 class="day">Monday</h1>
+                                <img src="graphics/partly-cloudy.png" class="forecastImg">
+                                <div class="lowHighWrapper">
+                                    <h3 class="low">90</h3>
+                                    <h1>-</h1>
+                                    <h3 class="high">100</h3>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="forecastCard">
+                            <div class="innerCard">
+                                <h2 class="day">Monday</h1>
+                                <img src="graphics/partly-cloudy.png" class="forecastImg">
+                                <div class="lowHighWrapper">
+                                    <h3 class="low">90</h3>
+                                    <h1>-</h1>
+                                    <h3 class="high">100</h3>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="forecastCard">
+                            <div class="innerCard">
+                                <h2 class="day">Monday</h1>
+                                <img src="graphics/partly-cloudy.png" class="forecastImg">
+                                <div class="lowHighWrapper">
+                                    <h3 class="low">90</h3>
+                                    <h1>-</h1>
+                                    <h3 class="high">100</h3>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="forecastCard">
+                            <div class="innerCard">
+                                <h2 class="day">Monday</h1>
+                                <img src="graphics/partly-cloudy.png" class="forecastImg">
+                                <div class="lowHighWrapper">
+                                    <h3 class="low">90</h3>
+                                    <h1>-</h1>
+                                    <h3 class="high">100</h3>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
 </body>
