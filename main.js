@@ -60,7 +60,14 @@ function getCurrentWeather(latitude, longitude) {
         document.getElementById('weatherWrapper').style.display = 'flex';
         fillCurrentWeatherData(json);
         
-    })
+    });
+    
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=imperial&appid=${getAPIKey()}`)
+    .then(response => response.json())
+    .then(json => {
+        console.log(json);
+        fillForecast(json);
+    });
 }
 
 function convertTime(timestamp, dow) { // unix timestamp, bool (true if include day of week)
@@ -90,13 +97,21 @@ function hideSearchElement() {
 }
 
 function showDetails() {
-    document.getElementById('currentWeatherList').style.display === 'none' 
-        ? document.getElementById('currentWeatherList').style.display = 'block' 
-        : document.getElementById('currentWeatherList').style.display = 'none';
+    if(document.getElementById('currentWeatherList').style.display === 'none' ) {
+        document.getElementById('currentWeatherList').style.display = 'block';
+        document.getElementById('detailsWrapper').style.flex = '1';
+    } else {
+        document.getElementById('currentWeatherList').style.display = 'none';
+        document.getElementById('detailsWrapper').style.flex = '0';
+    }
+    //document.getElementById('currentWeatherList').style.display === 'none' 
+    //    ? document.getElementById('currentWeatherList').style.display = 'block' 
+    //    : document.getElementById('currentWeatherList').style.display = 'none';
+
 }
 
 function fillCurrentWeatherData(json) {
-    document.getElementById('currentWeatherList').style.backgroundColor = 'rgba(0,0,0,0.25)';
+    //document.getElementById('currentWeatherList').style.backgroundColor = 'rgba(0,0,0,0.25)';
     // WEATHER RESULTS
     // Location
     document.querySelector('#currentLocation').textContent =  json.name;
@@ -119,10 +134,42 @@ function fillCurrentWeatherData(json) {
     // Wind
     // - Speed
     document.querySelector('#windspeed').textContent = 'WIND Speed: ' + Math.round(json.wind.speed) + ' MPH'; 
-    // - Deg 
-    document.querySelector('#winddeg').textContent = 'WIND Deg: ' + json.wind.deg + '°'; 
     // Sunset Time
     document.querySelector('#sunset').textContent = 'Sunset at ' + convertTime(json.sys.sunset, false); 
     // Sunrise Time
     document.querySelector('#sunrise').textContent = 'Sunrise at ' + convertTime(json.sys.sunrise, false); 
+}
+
+function fillForecast(json) {
+    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const forecastCardDays = document.querySelectorAll(".forecastCard .day");
+    const date = new Date();
+    
+    // Set day text of forecast cards
+    const daysArrayLength = days.length;
+    for(let i = 0; i < forecastCardDays.length; i++) {
+        // Slightly odd hack providing circular array access without mutation
+        forecastCardDays[i].textContent = days[((date.getDay() + i + 1) % daysArrayLength + daysArrayLength) % daysArrayLength]; 
+    }
+
+    //Setting highTemp and lowTemp for each day
+    const lows = document.querySelectorAll(".low");
+    const highs = document.querySelectorAll(".high");
+    
+    for(let i = 0; i < 5; i++){
+        let min = 999;
+        let max = -999;
+        for(let j = i * 8; j < (i * 8 + 8); j++) {
+            if (json.list[j].main.temp_min < min) {
+                min = json.list[j].main.temp_min;
+            }
+            
+            if (json.list[j].main.temp_max > max) {
+                max = json.list[j].main.temp_max
+            }
+        }
+        lows[i].textContent = Math.round(min);
+        highs[i].textContent = Math.round(max);
+    }
+
 }
