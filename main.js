@@ -152,13 +152,28 @@ function fillForecast(json) {
         forecastCardDays[i].textContent = days[((date.getDay() + i + 1) % daysArrayLength + daysArrayLength) % daysArrayLength]; 
     }
 
-    //Setting highTemp and lowTemp for each day
+    // Setting highTemp and lowTemp for each day
+    // API data is only in 3 hour increments, not daily, so check each increment for lowest and highest temp
     const lows = document.querySelectorAll(".low");
     const highs = document.querySelectorAll(".high");
-    
+    // TODO:
+    // Somehow implement weather condition precedence to decide which picture to display for each day
+    // lvl 1: clear 800
+    // lvl 2: few clouds 802
+    // lvl 3: broken or overcast clouds 803-804
+    // lvl 3: mist, haze, dust, etc 7xx
+    // lvl 4: drizzle 3xx
+    // lvl 5: rain 5xx
+    // lvl 6: snow 6xx
+    // lvl 7: thunderstorm 2xx
+    // find all possible condition codes to double check precedence
+    // Possible implementation:
+    // Create array for each day and add condition code value of every 3 hour datapoint,
+    // If array contains lvl 7, display lvl 7 picture, else if array contains lvl 6 display lvl 6 picture...
     for(let i = 0; i < 5; i++){
         let min = 999;
         let max = -999;
+        let conditions = []
         for(let j = i * 8; j < (i * 8 + 8); j++) {
             if (json.list[j].main.temp_min < min) {
                 min = json.list[j].main.temp_min;
@@ -167,9 +182,11 @@ function fillForecast(json) {
             if (json.list[j].main.temp_max > max) {
                 max = json.list[j].main.temp_max
             }
+
+            conditions.push(json.list[j].weather[0].id)
         }
         lows[i].textContent = Math.round(min);
         highs[i].textContent = Math.round(max);
     }
-
+    
 }
