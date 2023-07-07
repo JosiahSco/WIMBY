@@ -110,6 +110,15 @@ function showDetails() {
 
 }
 
+const lvl0Conditions = [800];
+const lvl1Conditions = [801, 802];
+const lvl2Conditions = [803, 804];
+const lvl3Conditions = [701, 711, 721, 731, 741, 751, 761, 762, 771, 781];
+const lvl4Conditions = [300, 301, 302, 310, 311, 312, 313, 314, 321];
+const lvl5Conditions = [500, 501, 502, 503, 504, 511, 520, 521, 522, 531];
+const lvl6Conditions = [600, 601, 602, 611, 612, 613, 615, 616, 620, 621, 622];
+const lvl7Conditions = [200, 201, 202, 210, 211, 212, 221, 230, 231, 231];
+
 function fillCurrentWeatherData(json) {
     //document.getElementById('currentWeatherList').style.backgroundColor = 'rgba(0,0,0,0.25)';
     // WEATHER RESULTS
@@ -117,8 +126,6 @@ function fillCurrentWeatherData(json) {
     document.querySelector('#currentLocation').textContent =  json.name;
     // Current Temperature
     document.querySelector('#currentTemp').textContent = Math.round(json.main.temp) + '°F';
-    // "AS OF CURRENT TIME"
-    //document.querySelector('#datetime').textContent = convertTime(json.dt, true); 
     // Feels Like
     document.querySelector('#feelslike').textContent = 'Feels Like: ' + Math.round(json.main.feels_like) + '°F'; 
     // Main Weather Status "rain"
@@ -138,6 +145,33 @@ function fillCurrentWeatherData(json) {
     document.querySelector('#sunset').textContent = 'Sunset at ' + convertTime(json.sys.sunset, false); 
     // Sunrise Time
     document.querySelector('#sunrise').textContent = 'Sunrise at ' + convertTime(json.sys.sunrise, false); 
+    // Weather Icon
+    let condition = json.weather[0].id;
+    if (lvl7Conditions.includes(condition)) {
+        // display thunderstorm
+        document.querySelector('#currentWeatherIcon').src = "graphics/1530363_weather_clouds_night_storm_icon.svg";
+    } else if (lvl6Conditions.includes(condition)) {
+        // display snow
+        document.querySelector('#currentWeatherIcon').src = "graphics/1530371_weather_clouds_snow_winter_icon.svg";
+    } else if (lvl5Conditions.includes(condition)) {
+        // display rain
+        document.querySelector('#currentWeatherIcon').src = "graphics/1530364_weather_rain_shower_storm_icon.svg";
+    } else if (lvl4Conditions.includes(condition)) {
+        // display drizzle
+        document.querySelector('#currentWeatherIcon').src = "graphics/1530365_weather_cloud_drizzel_rain_icon.svg";
+    } else if (lvl3Conditions.includes(condition)) {
+        // display mist
+        document.querySelector('#currentWeatherIcon').src = "graphics/1530368_weather_clouds_cloudy_fog_foggy_icon.svg";
+    } else if (lvl2Conditions.includes(condition)) {
+        // display heavy cloud
+        document.querySelector('#currentWeatherIcon').src = "graphics/1530369_weather_cloud_clouds_cloudy_icon.svg";
+    } else if (lvl1Conditions.includes(condition)) {
+        // display light cloud
+        document.querySelector('#currentWeatherIcon').src = "graphics/1530391_weather_clouds_sun_sunny_icon2.svg";
+    } else {
+        // display clear
+        document.querySelector('#currentWeatherIcon').src = "graphics/1530392_weather_sun_sunny_temperature_icon.svg";
+    }
 }
 
 function fillForecast(json) {
@@ -156,6 +190,7 @@ function fillForecast(json) {
     // API data is only in 3 hour increments, not daily, so check each increment for lowest and highest temp
     const lows = document.querySelectorAll(".low");
     const highs = document.querySelectorAll(".high");
+    const forecastImgs = document.querySelectorAll(".forecastImg");
     // TODO:
     // Somehow implement weather condition precedence to decide which picture to display for each day
     // lvl 1: clear 800
@@ -170,6 +205,8 @@ function fillForecast(json) {
     // Possible implementation:
     // Create array for each day and add condition code value of every 3 hour datapoint,
     // If array contains lvl 7, display lvl 7 picture, else if array contains lvl 6 display lvl 6 picture...
+    // Create arrays of each precedence level condition IDs then use array.some(x => array2.includes(x))
+    
     for(let i = 0; i < 5; i++){
         let min = 999;
         let max = -999;
@@ -185,8 +222,35 @@ function fillForecast(json) {
 
             conditions.push(json.list[j].weather[0].id)
         }
-        lows[i].textContent = Math.round(min);
-        highs[i].textContent = Math.round(max);
+        console.log(conditions);
+        if (conditions.some(condition => lvl7Conditions.includes(condition))) {
+            // display thunderstorm
+            forecastImgs[i].src = "graphics/1530363_weather_clouds_night_storm_icon.svg";
+        } else if (conditions.some(condition => lvl6Conditions.includes(condition))) {
+            // display snow
+            forecastImgs[i].src = "graphics/1530371_weather_clouds_snow_winter_icon.svg";
+        } else if (conditions.some(condition => lvl5Conditions.includes(condition))) {
+            // display rain
+            forecastImgs[i].src = "graphics/1530364_weather_rain_shower_storm_icon.svg";
+        } else if (conditions.some(condition => lvl4Conditions.includes(condition))) {
+            // display drizzle
+            forecastImgs[i].src = "graphics/1530365_weather_cloud_drizzel_rain_icon.svg";
+        } else if (conditions.some(condition => lvl3Conditions.includes(condition))) {
+            // display mist
+            forecastImgs[i].src = "graphics/1530368_weather_clouds_cloudy_fog_foggy_icon.svg";
+        } else if (conditions.some(condition => lvl2Conditions.includes(condition))) {
+            // display heavy cloud
+            forecastImgs[i].src = "graphics/1530369_weather_cloud_clouds_cloudy_icon.svg";
+        } else if (conditions.some(condition => lvl1Conditions.includes(condition))) {
+            // display light cloud
+            forecastImgs[i].src = "graphics/1530391_weather_clouds_sun_sunny_icon2.svg";
+        } else {
+            // display clear
+            forecastImgs[i].src = "graphics/1530392_weather_sun_sunny_temperature_icon.svg";
+        }
+        lows[i].textContent = Math.round(min) + "°F";
+        highs[i].textContent = Math.round(max) + "°F";
     }
     
 }
+
