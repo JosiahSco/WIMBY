@@ -191,21 +191,6 @@ function fillForecast(json) {
     const lows = document.querySelectorAll(".low");
     const highs = document.querySelectorAll(".high");
     const forecastImgs = document.querySelectorAll(".forecastImg");
-    // TODO:
-    // Somehow implement weather condition precedence to decide which picture to display for each day
-    // lvl 1: clear 800
-    // lvl 2: few clouds 802
-    // lvl 3: broken or overcast clouds 803-804
-    // lvl 3: mist, haze, dust, etc 7xx
-    // lvl 4: drizzle 3xx
-    // lvl 5: rain 5xx
-    // lvl 6: snow 6xx
-    // lvl 7: thunderstorm 2xx
-    // find all possible condition codes to double check precedence
-    // Possible implementation:
-    // Create array for each day and add condition code value of every 3 hour datapoint,
-    // If array contains lvl 7, display lvl 7 picture, else if array contains lvl 6 display lvl 6 picture...
-    // Create arrays of each precedence level condition IDs then use array.some(x => array2.includes(x))
     
     for(let i = 0; i < 5; i++){
         let min = 999;

@@ -78,6 +78,10 @@ header {
     box-shadow: 0 4px 4px rgba(0,0,0,0.25);
 }
 
+.search-bar button:active {
+    transform: translateY(2px);
+}
+
 .innerContainer {
     display: flex;
     overflow: visible;
@@ -118,16 +122,22 @@ ul {
     justify-content: center;
     margin: 0;
     box-shadow: 0 4px 4px rgba(0,0,0,0.25);
+    opacity: 0;
+    animation-name: fadeIn;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
 }
 
-#currentWeatherIcon {
-    flex-direction: row;
-    width: 250px;
-    align-items: center;
-}
 
 #imageWrapper {
     flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+#currentWeatherIcon {
+    min-width: 18vw;
 }
 
 #currentWeatherStack {
@@ -136,25 +146,29 @@ ul {
     flex-direction: column;
     margin-block-start: 0;
     margin-block-end: 0;
-    width: 300px;
     justify-content: center;
     align-items: center;
+    margin: 0 2vw 0 0;
+    /* padding: 0 3vw 0 0; */
 }
 
 
 #currentWeatherList {
-    padding: 20px;
-    font-size: 20px;
+    padding: 0;
+    margin: 1vw;
+    font-size: 18px;
     border-radius: 25px;
-    /* color: rgb(218, 199, 212); */
     list-style-type: none;
+}
+
+#detailsWrapper {
     flex: 1;
 }
 
 #currentTemp {
     /* color: rgb(218, 199, 212); */
     color: #F7D9F2;
-    font-size: 120px;
+    font-size: 110px;
     margin-block-start: 0;
     margin-block-end: -0.2em;
     /*margin-inline-start: -0.1em;*/ 
@@ -162,7 +176,7 @@ ul {
 
 #currentLocation {
     /* color: rgb(218, 199, 212); */
-    font-size: 30px;
+    font-size: 26px;
     margin-block-end: -1em;
 }
 
@@ -176,6 +190,10 @@ ul {
     height: 30px;
     cursor: pointer;
     box-shadow: 0 4px 4px rgba(0,0,0,0.25);
+}
+
+#detailsButton:active {
+    transform: translateY(2px);
 }
 
 .forecastCard {
@@ -197,7 +215,7 @@ ul {
 
 .forecastImg{
     width: 10vw;
-    margin: -2vh;
+    margin: -4vh;
 }
 
 .lowHighWrapper {
@@ -215,6 +233,53 @@ ul {
 
 
 #forecastTable {
-    border-spacing: 5vw 4vh;
+    border-spacing: 3.5vw 0vh;
 }
 
+#forecastRow td {
+    opacity: 0;
+    animation-name: fadeIn;
+    animation-duration: 1.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+#day1 {
+    animation-delay: 0.5s
+}
+
+#day2 {
+    animation-delay: 1s;
+}
+
+#day3 {
+    animation-delay: 1.5s;
+}
+
+#day4 {
+    animation-delay: 2s;
+}
+
+#day5 {
+    animation-delay: 2.5s;
+}
+
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes expandDetails {
+    from {
+        width: auto;
+    }
+
+    to {
+        width: 39.774vw;
+    }
+  }
